@@ -1,0 +1,22 @@
+<!-- <v-btn class="pink white--text">clique qui</v-btn>
+    <v-btn dark color="blue">clique qui</v-btn>
+    <v-btn flat color="blue">clique qui</v-btn>
+
+    <v-btn>
+      <v-icon left>email</v-icon>
+      <span>Email Me !</span>
+    </v-btn>
+
+    <v-btn depressed small>
+      <v-icon left small>email</v-icon>
+      <span>Email Me !</span>
+    </v-btn>
+
+    <v-btn depressed large>
+      <span>Email Me !</span>
+      <v-icon large right>email</v-icon>
+    </v-btn>
+
+    <v-btn fab large color="pink" dark>
+      <v-icon>favorite</v-icon>
+    </v-btn>-->

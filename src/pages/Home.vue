@@ -1,0 +1,34 @@
+<template>
+  <v-app>
+    <v-alert
+      type="success"
+      :value="true"
+      class="font-weight-bold"
+    >Bem vindo {{username}} ! Estamos Redirecionando Você !</v-alert>
+  </v-app>
+</template>
+
+<script>
+export default {
+  name: "Home",
+  data: () => {
+    return {
+      username: localStorage.getItem("@bolotashare:username")
+    };
+  },
+  methods: {
+    redirect: function() {
+      setTimeout(() => {
+        this.$router.push({ name: "trendingAll" });
+      }, 2000);
+    }
+  },
+  mounted() {
+    this.redirect();
+  }
+};
+</script>
+
+<style scoped>
+</style>
+
