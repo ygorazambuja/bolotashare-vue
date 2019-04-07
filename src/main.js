@@ -6,6 +6,7 @@ import VueRouter from 'vue-router';
 import SignIn from './pages/SignIn';
 import Home from './pages/Home';
 import Cadastro from './pages/Cadastro';
+import FilmPage from './pages/FilmPage';
 
 import TrendingAll from './views/TrendingAll';
 import PopularSeries from './views/PopularSeries';
@@ -66,6 +67,11 @@ const routes = [
     name: 'resultPage',
     path: '/resultPage/:content',
     component: ResultPage
+  },
+  {
+    name: 'filmPage',
+    path: '/filmPage/:id',
+    component: FilmPage
   }
 ];
 
