@@ -32,17 +32,17 @@
 
 <script>
 export default {
-  data: function() {
+  data() {
     return {
       dialog: false,
-      searched: ""
+      searched: ''
     };
   },
   methods: {
-    searchContent: function() {
+    searchContent() {
       const content = this.searched;
       this.dialog = false;
-      this.$router.push({ name: "resultPage", params: { content: content } });
+      this.$router.push({ name: 'resultPage', params: { content } });
     }
   }
 };

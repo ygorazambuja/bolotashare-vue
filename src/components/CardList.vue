@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import Config from "../configs/config";
+import Config from '../configs/config';
 export default {
-  props: ["filmList"],
-  data: function() {
+  props: ['filmList'],
+  data() {
     return {
       imgUrl: Config.IMAGE_BASE_URL
     };

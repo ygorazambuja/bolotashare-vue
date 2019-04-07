@@ -50,30 +50,30 @@
 </template>
 
 <script>
-import api from "../services/api";
+import api from '../services/api';
 export default {
-  name: "SignIn",
+  name: 'SignIn',
   data() {
     return {
-      message: "bejotashare",
-      username: "",
-      password: "",
+      message: 'bejotashare',
+      username: '',
+      password: '',
       checked: false,
       visible: false,
       loading: false
     };
   },
   methods: {
-    doLogin: function(event) {
+    doLogin(event) {
       event.preventDefault();
       this.loading = true;
 
       const { username, password } = this;
       api
-        .post("/authenticate", {
+        .post('/authenticate', {
           crossdomain: true,
-          username: username,
-          password: password
+          username,
+          password
         })
         .then(response => {
           const { username } = response.data.user;
@@ -81,9 +81,9 @@ export default {
           this.loading = false;
 
           if (response.data.user.username) {
-            localStorage.setItem("@bolotashare:username", username);
-            localStorage.setItem("@bolotashare:token", token);
-            this.$router.push({ name: "home" });
+            localStorage.setItem('@bolotashare:username', username);
+            localStorage.setItem('@bolotashare:token', token);
+            this.$router.push({ name: 'home' });
           }
         })
         .catch(error => {
@@ -91,17 +91,17 @@ export default {
           this.showWarning(error);
         });
     },
-    showWarning: function(error) {
+    showWarning(error) {
       this.visible = true;
       setTimeout(() => {
         this.visible = false;
       }, 5000);
     }
   },
-  mounted: function() {
+  mounted() {
     const { token } = localStorage;
     if (token) {
-      return this.$router.push({ name: "home" });
+      return this.$router.push({ name: 'home' });
     }
   }
 };

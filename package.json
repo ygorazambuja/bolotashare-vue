@@ -6,12 +6,13 @@
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint",
-        "postinstall": "npm run build",
-        "start": "node server.js"
+        "start": "node server.js",
+        "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build"
     },
     "dependencies": {
         "axios": "^0.18.0",
         "core-js": "^2.6.5",
+        "express": "^4.16.4",
         "material-design-icons-iconfont": "^4.0.5",
         "vue": "^2.6.6",
         "vue-eslint-parser": "^6.0.3",
@@ -27,9 +28,7 @@
         "eslint": "^5.8.0",
         "eslint-config-fix-all": "^1.0.1",
         "eslint-plugin-vue": "^5.2.2",
-        "express": "^4.16.4",
         "lint-staged": "^8.1.4",
-        "serve-static": "^1.13.2",
         "stylus": "^0.54.5",
         "stylus-loader": "^3.0.1",
         "vue-cli-plugin-vuetify": "^0.5.0",
@@ -61,9 +60,6 @@
         "last 2 versions",
         "not ie <= 8"
     ],
-    "gitHooks": {
-        "pre-commit": "lint-staged"
-    },
     "lint-staged": {
         "*.{js,vue}": [
             "vue-cli-service lint",

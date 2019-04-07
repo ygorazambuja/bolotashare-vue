@@ -28,7 +28,9 @@ export default {
 
   watch: {
     dialog(val) {
-      if (!val) return;
+      if (!val) {
+        return;
+      }
       setTimeout(() => (this.dialog = false), 4000);
     }
   }

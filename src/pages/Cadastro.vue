@@ -25,42 +25,48 @@
 </template>
 
 <script>
-import api from "../services/api";
-import { close } from "fs";
+import api from '../services/api';
+import { close } from 'fs';
 export default {
   data: () => ({
-    username: "",
-    password: "",
-    passwordAux: "",
-    email: "",
+    username: '',
+    password: '',
+    passwordAux: '',
+    email: '',
     valid: false,
     passwordValidation: false,
     loading: false
   }),
   methods: {
-    validateFields: function() {
-      if (!this.password || this.password.length <= 0)
-        return console.log("password cannot be empty");
-      if (this.password != this.passwordAux)
-        return console.log("passwords need to be equals");
-      if (!this.username || this.username.length <= 0)
-        return console.log("username cannot be empty");
-      if (!this.email || this.email.length <= 0)
-        return console.log("email cannot me empty");
+    validateFields() {
+      if (!this.password || this.password.length <= 0) {
+        return console.log('password cannot be empty');
+      }
+      if (this.password != this.passwordAux) {
+        return console.log('passwords need to be equals');
+      }
+      if (!this.username || this.username.length <= 0) {
+        return console.log('username cannot be empty');
+      }
+      if (!this.email || this.email.length <= 0) {
+        return console.log('email cannot me empty');
+      }
 
       this.valid = true;
       const { email } = this;
       const regex = /.+@.+/;
 
-      if (!regex.test(email)) return console.log("email invalido");
+      if (!regex.test(email)) {
+        return console.log('email invalido');
+      }
       this.makeAccount();
     },
-    makeAccount: function() {
+    makeAccount() {
       this.loading = true;
       const { username, password, email } = this;
 
       api
-        .post("/createUser", {
+        .post('/createUser', {
           crossdomain: true,
           username,
           password,
@@ -71,13 +77,13 @@ export default {
           const { token } = response.data;
           const { username } = response.data.user;
 
-          localStorage.setItem("@bolotashare:token", token);
-          localStorage.setItem("@bolotashare:username", username);
-          this.$router.push({ name: "home" });
+          localStorage.setItem('@bolotashare:token', token);
+          localStorage.setItem('@bolotashare:username', username);
+          this.$router.push({ name: 'home' });
         });
     },
-    backToSignIn: function() {
-      this.$router.push({ name: "signin" });
+    backToSignIn() {
+      this.$router.push({ name: 'signin' });
     }
   }
 };

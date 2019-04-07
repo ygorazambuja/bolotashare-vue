@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import SearchDialog from "./SearchDialog";
+import SearchDialog from './SearchDialog';
 export default {
   components: {
     SearchDialog
@@ -43,42 +43,42 @@ export default {
       urlList: [
         {
           id: 1,
-          name: "Trending Movies",
-          icon: "new_releases",
-          route: "/trendingMovies"
+          name: 'Trending Movies',
+          icon: 'new_releases',
+          route: '/trendingMovies'
         },
         {
           id: 2,
-          name: "Top Movies",
-          icon: "movie",
-          route: "/topMovies"
+          name: 'Top Movies',
+          icon: 'movie',
+          route: '/topMovies'
         },
         {
           id: 3,
-          name: "Top Series",
-          icon: "thumb_up",
-          route: "/topSeries"
+          name: 'Top Series',
+          icon: 'thumb_up',
+          route: '/topSeries'
         },
         {
           id: 4,
-          name: "Trending All",
-          icon: "trending_up",
-          route: "/trendingAll"
+          name: 'Trending All',
+          icon: 'trending_up',
+          route: '/trendingAll'
         },
         {
           id: 5,
-          name: "Popular Series",
-          icon: "tv",
-          route: "/popularSeries"
+          name: 'Popular Series',
+          icon: 'tv',
+          route: '/popularSeries'
         }
       ]
     };
   },
   methods: {
-    logout: function() {
-      localStorage.removeItem("@bolotashare:username");
-      localStorage.removeItem("@bolotashare:token");
-      this.$router.push({ name: "signin" });
+    logout() {
+      localStorage.removeItem('@bolotashare:username');
+      localStorage.removeItem('@bolotashare:token');
+      this.$router.push({ name: 'signin' });
     }
   }
 };

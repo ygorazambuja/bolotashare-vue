@@ -6,37 +6,39 @@
 </template>
 
 <script>
-import axios from "axios";
-import config from "../configs/config";
-import CardList from "../components/CardList";
+import axios from 'axios';
+import config from '../configs/config';
+import CardList from '../components/CardList';
 export default {
-  name: "TrendingAll",
+  name: 'TrendingAll',
   components: {
     card: CardList
   },
-  data: function() {
+  data() {
     return {
-      msg: "Top Trending",
+      msg: 'Top Trending',
       filmList: [],
       imgUrl: config.IMAGE_BASE_URL,
       loading: true
     };
   },
   methods: {
-    loadContent: function() {
+    loadContent() {
       axios.get(`${config.TRENDING_ALL + config.API_KEY}`).then(result => {
         this.filmList = result.data.results;
         this.loading = false;
       });
     },
-    verifyLogin: function() {
-      const username = localStorage.getItem("@bolotashare:username");
-      const token = localStorage.getItem("@bolotashare:token");
+    verifyLogin() {
+      const username = localStorage.getItem('@bolotashare:username');
+      const token = localStorage.getItem('@bolotashare:token');
 
-      if (!username || !token) this.$router.push({ name: "signin" });
+      if (!username || !token) {
+        this.$router.push({ name: 'signin' });
+      }
     }
   },
-  mounted: function() {
+  mounted() {
     this.verifyLogin();
     this.loadContent();
   }

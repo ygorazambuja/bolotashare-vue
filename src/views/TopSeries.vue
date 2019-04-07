@@ -6,40 +6,42 @@
 </template>
 
 <script>
-import axios from "axios";
-import config from "../configs/config";
-import CardList from "../components/CardList";
+import axios from 'axios';
+import config from '../configs/config';
+import CardList from '../components/CardList';
 export default {
-  name: "TopSeries",
+  name: 'TopSeries',
   components: {
     card: CardList
   },
-  data: function() {
+  data() {
     return {
-      msg: "Top Series",
+      msg: 'Top Series',
       filmList: [],
       imgUrl: config.IMAGE_BASE_URL,
       loading: true
     };
   },
-  mounted: function() {
+  mounted() {
     this.verifyLogin();
   },
   methods: {
-    loadContent: function() {
+    loadContent() {
       axios.get(`${config.TOP_SERIES_URL + config.API_KEY}`).then(result => {
         this.filmList = result.data.results;
         this.loading = false;
       });
     },
-    verifyLogin: function() {
-      const username = localStorage.getItem("@bolotashare:username");
-      const token = localStorage.getItem("@bolotashare:token");
+    verifyLogin() {
+      const username = localStorage.getItem('@bolotashare:username');
+      const token = localStorage.getItem('@bolotashare:token');
 
-      if (!username || !token) this.$router.push({ name: "signin" });
+      if (!username || !token) {
+        this.$router.push({ name: 'signin' });
+      }
     }
   },
-  mounted: function() {
+  mounted() {
     this.verifyLogin();
     this.loadContent();
   }
