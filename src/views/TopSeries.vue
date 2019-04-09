@@ -8,11 +8,11 @@
 <script>
 import axios from "axios";
 import config from "../configs/config";
-import CardList from "../components/CardList";
+import SerieCardList from "../components/SerieCardList";
 export default {
   name: "TopSeries",
   components: {
-    card: CardList
+    card: SerieCardList
   },
   data() {
     return {
