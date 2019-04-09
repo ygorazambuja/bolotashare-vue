@@ -15,7 +15,7 @@
       <v-card-text>
         <v-container grid-list-md>
           <v-layout wrap>
-            <v-flex xs12 sm6 md4>
+            <v-flex>
               <v-text-field label="Movie or Series or Whateaver" v-model="searched"></v-text-field>
             </v-flex>
           </v-layout>
@@ -35,14 +35,14 @@ export default {
   data() {
     return {
       dialog: false,
-      searched: ''
+      searched: ""
     };
   },
   methods: {
     searchContent() {
       const content = this.searched;
       this.dialog = false;
-      this.$router.push({ name: 'resultPage', params: { content } });
+      this.$router.push({ name: "resultPage", params: { content } });
     }
   }
 };

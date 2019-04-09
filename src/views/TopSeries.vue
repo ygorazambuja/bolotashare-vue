@@ -39,8 +39,8 @@ export default {
     }
   },
   mounted() {
-    this.verifyLogin();
     this.loadContent();
+    this.verifyLogin();
   }
 };
 </script>

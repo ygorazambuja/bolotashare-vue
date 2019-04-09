@@ -7,6 +7,7 @@ import SignIn from './pages/SignIn';
 import Home from './pages/Home';
 import Cadastro from './pages/Cadastro';
 import FilmPage from './pages/FilmPage';
+import SeriePage from './pages/SeriePage';
 
 import TrendingAll from './views/TrendingAll';
 import PopularSeries from './views/PopularSeries';
@@ -72,6 +73,11 @@ const routes = [
     name: 'filmPage',
     path: '/filmPage/:id',
     component: FilmPage
+  },
+  {
+    name: 'seriePage',
+    path: '/seriePage/:id',
+    component: SeriePage
   }
 ];
 
