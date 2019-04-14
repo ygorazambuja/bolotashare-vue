@@ -1,36 +1,42 @@
 <template>
   <v-app>
-    <h4 class="grey--text">{{msg}}</h4>
+    <h3 class="grey--text">Searching for {{ content }}</h3>
     <card v-bind:filmList="filmList"></card>
   </v-app>
 </template>
 
+
 <script>
 import axios from "axios";
 import config from "../configs/config";
-import CardList from "../components/CardList";
+import CardList from "@/components/CardList";
 export default {
-  name: "TopMovies",
   components: {
     card: CardList
   },
   data() {
     return {
-      msg: "Top Movies",
-      filmList: [],
+      content: "",
       imgUrl: config.IMAGE_BASE_URL,
-      loading: true
+      filmList: []
     };
   },
-  mounted() {
-    this.verifyLogin();
+  created() {
+    this.content = this.$route.params.content;
   },
   methods: {
     loadContent() {
-      axios.get(`${config.TOP_MOVIES_URL + config.API_KEY}`).then(result => {
-        this.filmList = result.data.results;
-        this.loading = false;
-      });
+      axios
+        .get(
+          `${config.SEARCH_MOVIE +
+            config.API_KEY +
+            config.QUERY +
+            this.content}`
+        )
+        .then(result => {
+          this.filmList = result.data.results;
+          this.loading = false;
+        });
     },
     verifyLogin() {
       const username = localStorage.getItem("@bolotashare:username");
@@ -44,6 +50,12 @@ export default {
   mounted() {
     this.verifyLogin();
     this.loadContent();
+  },
+  watch: {
+    $route(to, from) {
+      this.content = this.$route.params.content;
+      this.loadContent();
+    }
   }
 };
 </script>

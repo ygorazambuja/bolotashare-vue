@@ -30,15 +30,11 @@ export default {
   },
   methods: {
     getVideos: function() {
-      console.log(
-        config.MOVIE_BASE_URL + this.filmId + "/videos" + config.API_KEY
-      );
       axios
         .get(
           `${config.MOVIE_BASE_URL + this.filmId + "/videos" + config.API_KEY}`
         )
         .then(result => {
-          console.log(result.data.results);
           this.filmTrailerId = result.data.results[0].key;
         })
         .catch(err => {});

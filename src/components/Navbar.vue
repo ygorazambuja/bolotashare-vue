@@ -1,7 +1,8 @@
 <template>
   <nav>
     <v-toolbar app>
-      <v-toolbar-side-icon class="grey--text" @click="drawer =!drawer"></v-toolbar-side-icon>
+      <!-- <v-toolbar-side-icon class="grey--text" @click="drawer =!drawer"></v-toolbar-side-icon> -->
+      <v-toolbar-side-icon class="grey--text" @click="espandeBarra"></v-toolbar-side-icon>
       <v-toolbar-title class="text-uppercase grey--text">
         <span class="font-weight-light">bolota</span>
         <span>share</span>
@@ -31,7 +32,7 @@
 </template>
 
 <script>
-import SearchDialog from './SearchDialog';
+import SearchDialog from "./SearchDialog";
 export default {
   components: {
     SearchDialog
@@ -43,44 +44,53 @@ export default {
       urlList: [
         {
           id: 1,
-          name: 'Trending Movies',
-          icon: 'new_releases',
-          route: '/trendingMovies'
+          name: "Trending Movies",
+          icon: "new_releases",
+          route: "/trendingMovies"
         },
         {
           id: 2,
-          name: 'Top Movies',
-          icon: 'movie',
-          route: '/topMovies'
+          name: "Top Movies",
+          icon: "movie",
+          route: "/topMovies"
         },
         {
           id: 3,
-          name: 'Top Series',
-          icon: 'thumb_up',
-          route: '/topSeries'
+          name: "Top Series",
+          icon: "thumb_up",
+          route: "/topSeries"
         },
-        {
-          id: 4,
-          name: 'Trending All',
-          icon: 'trending_up',
-          route: '/trendingAll'
-        },
+        // {
+        //   id: 4,
+        //   name: "Trending All",
+        //   icon: "trending_up",
+        //   route: "/trendingAll"
+        // },
         {
           id: 5,
-          name: 'Popular Series',
-          icon: 'tv',
-          route: '/popularSeries'
+          name: "Popular Series",
+          icon: "tv",
+          route: "/popularSeries"
         }
       ]
     };
   },
   methods: {
     logout() {
-      localStorage.removeItem('@bolotashare:username');
-      localStorage.removeItem('@bolotashare:token');
-      this.$router.push({ name: 'signin' });
+      localStorage.removeItem("@bolotashare:username");
+      localStorage.removeItem("@bolotashare:token");
+      this.$router.push({ name: "signin" });
+    },
+    espandeBarra() {
+      this.verificaLogin();
+    },
+    verificaLogin() {
+      let token = localStorage.getItem("@bolotashare:token");
+      console.log(token);
+      if (token) this.drawer = !this.drawer;
     }
   }
 };
+6;
 </script>
 

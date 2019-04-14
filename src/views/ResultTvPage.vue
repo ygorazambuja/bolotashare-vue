@@ -7,16 +7,16 @@
 
 
 <script>
-import axios from 'axios';
-import config from '../configs/config';
-import CardList from '@/components/CardList';
+import axios from "axios";
+import config from "../configs/config";
+import SerieCardList from "@/components/SerieCardList";
 export default {
   components: {
-    card: CardList
+    card: SerieCardList
   },
   data() {
     return {
-      content: '',
+      content: "",
       imgUrl: config.IMAGE_BASE_URL,
       filmList: []
     };
@@ -28,7 +28,7 @@ export default {
     loadContent() {
       axios
         .get(
-          `${config.SEARCH_MOVIE +
+          `${config.SEARCH_SERIE +
             config.API_KEY +
             config.QUERY +
             this.content}`
@@ -39,11 +39,11 @@ export default {
         });
     },
     verifyLogin() {
-      const username = localStorage.getItem('@bolotashare:username');
-      const token = localStorage.getItem('@bolotashare:token');
+      const username = localStorage.getItem("@bolotashare:username");
+      const token = localStorage.getItem("@bolotashare:token");
 
       if (!username || !token) {
-        this.$router.push({ name: 'signin' });
+        this.$router.push({ name: "signin" });
       }
     }
   },

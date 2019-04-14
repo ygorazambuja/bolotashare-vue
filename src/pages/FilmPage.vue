@@ -16,7 +16,7 @@
               </div>
               <div>
                 <v-icon color="indigo">face</v-icon>
-                <span color="indigo">diretor</span>
+                <span color="indigo">{{directorName}}</span>
               </div>
             </v-flex>
             <v-flex xs12 md4 sm6>
@@ -58,6 +58,7 @@
           </v-list>
         </v-flex>
       </v-layout>
+      <CardList v-bind:filmList="recommended"></CardList>
     </v-container>
   </v-app>
 </template>
@@ -69,10 +70,13 @@ import axios from "axios";
 import Card from "@/components/Card";
 import config from "@/configs/config";
 import YouTubeDialog from "@/components/YouTubeDialog";
+import CardList from "@/components/CardList";
+
 export default {
   components: {
     card: Card,
-    YouTubeDialog
+    YouTubeDialog,
+    CardList
   },
   data() {
     return {
@@ -80,7 +84,10 @@ export default {
       filmId: this.$route.params.id,
       imgUrl: config.IMAGE_BASE_URL,
       torrentLinks: [],
-      torrentLoading: false
+      torrentLoading: false,
+      recommended: [],
+      filmStaff: [],
+      directorName: ""
     };
   },
   methods: {
@@ -89,20 +96,48 @@ export default {
         .get(`${config.MOVIE_BASE_URL + this.filmId + config.API_KEY}`)
         .then(result => {
           this.film = result.data;
-          console.log(this.film);
         });
+      this.loadRecommended();
     },
     loadTorrentLinks() {
       this.torrentLoading = true;
       api.get(`/torrent/${this.film.title}`).then(result => {
         this.torrentLinks = result.data;
         this.torrentLoading = false;
-        console.log(result.data);
       });
+    },
+    loadRecommended() {
+      console.log("entrei aqui");
+      axios
+        .get(
+          `${config.MOVIE_BASE_URL + this.filmId}/recommendations${
+            config.API_KEY
+          }`
+        )
+        .then(result => {
+          this.recommended = result.data.results;
+        })
+        .catch(err => {});
+    },
+    loadCredits() {
+      axios
+        .get(`${config.MOVIE_BASE_URL + this.filmId}/credits${config.API_KEY}`)
+        .then(result => {
+          this.filmStaff = result.data;
+          console.log(this.filmStaff.crew);
+
+          this.filmStaff.crew.map(integrante => {
+            if (integrante.job === "Director")
+              this.directorName = integrante.name;
+          });
+        })
+        .catch(err => {});
     }
   },
+
   mounted() {
     this.loadContent();
+    this.loadCredits();
   }
 };
 </script>

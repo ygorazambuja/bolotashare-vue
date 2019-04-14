@@ -10,14 +10,14 @@
 
 <script>
 export default {
-  name: 'Home',
+  name: "Home",
   data: () => ({
-    username: localStorage.getItem('@bolotashare:username')
+    username: localStorage.getItem("@bolotashare:username")
   }),
   methods: {
     redirect() {
       setTimeout(() => {
-        this.$router.push({ name: 'trendingAll' });
+        this.$router.push({ name: "trendingMovies" });
       }, 2000);
     }
   },

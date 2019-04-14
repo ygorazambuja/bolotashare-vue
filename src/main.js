@@ -14,7 +14,8 @@ import PopularSeries from './views/PopularSeries';
 import TopSeries from './views/TopSeries';
 import TopMovies from './views/TopMovies';
 import TrendingMovies from './views/TrendingMovies';
-import ResultPage from './views/ResultPage';
+import ResultMoviePage from './views/ResultMoviePage';
+import ResultTvPage from './views/ResultTvPage';
 
 import 'vuetify/dist/vuetify.min.css';
 
@@ -65,9 +66,9 @@ const routes = [
     component: TrendingMovies
   },
   {
-    name: 'resultPage',
-    path: '/resultPage/:content',
-    component: ResultPage
+    name: 'resultMoviePage',
+    path: '/resultMoviePage/:content',
+    component: ResultMoviePage
   },
   {
     name: 'filmPage',
@@ -78,6 +79,11 @@ const routes = [
     name: 'seriePage',
     path: '/seriePage/:id',
     component: SeriePage
+  },
+  {
+    name: 'resultTvPage',
+    path: '/ResultTvPage/:id',
+    component: ResultTvPage
   }
 ];
 
