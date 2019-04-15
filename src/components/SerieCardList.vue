@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import Config from "../configs/config";
-import SerieCard from "@/components/SerieCard";
+import Config from '../configs/config';
+import SerieCard from '@/components/SerieCard';
 export default {
-  props: ["filmList"],
+  props: ['filmList'],
   components: {
     card: SerieCard
   }

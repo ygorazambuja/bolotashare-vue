@@ -6,17 +6,17 @@
 </template>
 
 <script>
-import axios from "axios";
-import config from "../configs/config";
-import CardList from "../components/CardList";
+import axios from 'axios';
+import config from '../configs/config';
+import CardList from '../components/CardList';
 export default {
-  name: "TopMovies",
+  name: 'TopMovies',
   components: {
     card: CardList
   },
   data() {
     return {
-      msg: "Top Movies",
+      msg: 'Top Movies',
       filmList: [],
       imgUrl: config.IMAGE_BASE_URL,
       loading: true
@@ -33,11 +33,11 @@ export default {
       });
     },
     verifyLogin() {
-      const username = localStorage.getItem("@bolotashare:username");
-      const token = localStorage.getItem("@bolotashare:token");
+      const username = localStorage.getItem('@bolotashare:username');
+      const token = localStorage.getItem('@bolotashare:token');
 
       if (!username || !token) {
-        this.$router.push({ name: "signin" });
+        this.$router.push({ name: 'signin' });
       }
     }
   },

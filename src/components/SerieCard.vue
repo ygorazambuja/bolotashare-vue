@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import Config from "../configs/config";
+import Config from '../configs/config';
 export default {
-  props: ["film"],
+  props: ['film'],
   data() {
     return {
       imgUrl: Config.IMAGE_BASE_URL
@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     goTo() {
-      this.$router.push({ name: "seriePage", params: { id: this.film.id } });
+      this.$router.push({ name: 'seriePage', params: { id: this.film.id } });
     }
   }
 };

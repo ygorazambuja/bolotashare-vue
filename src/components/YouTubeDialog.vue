@@ -16,30 +16,30 @@
 </template>
 
 <script>
-import axios from "axios";
-import config from "../configs/config";
+import axios from 'axios';
+import config from '../configs/config';
 export default {
-  props: ["filmId"],
+  props: ['filmId'],
   data() {
     return {
       dialog: false,
-      searched: "",
-      YOUT_URL: "https:/" + "/www.youtube.com/embed/",
+      searched: '',
+      YOUT_URL: 'https:/' + '/www.youtube.com/embed/',
       filmTrailerId: 0
     };
   },
   methods: {
-    getVideos: function() {
+    getVideos() {
       axios
         .get(
-          `${config.MOVIE_BASE_URL + this.filmId + "/videos" + config.API_KEY}`
+          `${`${config.MOVIE_BASE_URL + this.filmId}/videos${config.API_KEY}`}`
         )
         .then(result => {
           this.filmTrailerId = result.data.results[0].key;
         })
         .catch(err => {});
     },
-    dialogKill: function() {
+    dialogKill() {
       this.dialog = false;
       this.$off();
     }
