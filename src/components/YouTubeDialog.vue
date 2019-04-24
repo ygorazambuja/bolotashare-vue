@@ -16,15 +16,15 @@
 </template>
 
 <script>
-import axios from 'axios';
-import config from '../configs/config';
+import axios from "axios";
+import config from "../configs/config";
 export default {
-  props: ['filmId'],
+  props: ["filmId"],
   data() {
     return {
       dialog: false,
-      searched: '',
-      YOUT_URL: 'https:/' + '/www.youtube.com/embed/',
+      searched: "",
+      YOUT_URL: "https:/" + "/www.youtube.com/embed/",
       filmTrailerId: 0
     };
   },

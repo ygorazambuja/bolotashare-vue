@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import config from '../configs/config';
-import axios from 'axios';
+import config from "../configs/config";
+import axios from "axios";
 export default {
-  props: ['film'],
+  props: ["film"],
   data() {
     return {
       imgUrl: config.IMAGE_BASE_URL
@@ -28,15 +28,10 @@ export default {
   },
   methods: {
     goTo() {
-      this.$router.push({ name: 'filmPage', params: { id: this.film.id } });
+      this.$router.push({ name: "filmPage", params: { id: this.film.id } });
       location.reload();
     }
   },
-  computed: {},
-  watch: {
-    $route(to, from) {
-      console.log(to, from);
-    }
-  }
+  computed: {}
 };
 </script>

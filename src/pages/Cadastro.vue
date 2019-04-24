@@ -44,22 +44,18 @@ export default {
       if (!this.password || this.password.length <= 0) {
         this.valid = false;
         this.validatorMessage = "Password não pode ser vazio";
-        return console.log("Password não pode ser Vazio");
       }
       if (this.password != this.passwordAux) {
         this.valid = false;
         this.validatorMessage = "Passwords precisam ser iguais";
-        return console.log("passwords need to be equals");
       }
       if (!this.username || this.username.length <= 0) {
         this.valid = false;
         this.validatorMessage = "Username não pode ser Vazio";
-        return console.log("username cannot be empty");
       }
       if (!this.email || this.email.length <= 0) {
         this.valid = false;
         this.validatorMessage = "Email não pode ser vazio";
-        return console.log("email cannot me empty");
       }
 
       this.valid = true;
@@ -69,7 +65,6 @@ export default {
       if (!regex.test(email)) {
         this.valid = false;
         this.validatorMessage = "Email Invalido";
-        return console.log("email invalido");
       }
       this.makeAccount();
     },

@@ -54,9 +54,6 @@ export default {
       } else {
         this.$router.push({ name: "resultTvPage", params: { content } });
       }
-    },
-    exec() {
-      console.log(this.row);
     }
   }
 };

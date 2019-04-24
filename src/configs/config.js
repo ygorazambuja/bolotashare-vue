@@ -11,8 +11,9 @@ export default {
   TOP_SERIES_URL: 'https://api.themoviedb.org/3/tv/top_rated',
   TRENDING_ALL: 'https://api.themoviedb.org/3/trending/all/day',
   POPULAR_SERIES: 'https://api.themoviedb.org/3/tv/popular',
+  PAGE: '&page=',
   // https://api.themoviedb.org/3/movie/94?api_key=ab319f50a3792c49e23a3336df9f0d80
   // https://api.themoviedb.org/3/search/movie?api_key=ab319f50a3792c49e23a3336df9f0d80&language=en-US&query=captain%20marvel&page=1&include_adult=false
   GENRE_SEARCH:
-    'https://api.themoviedb.org/3/discover/movie?api_key=ab319f50a3792c49e23a3336df9f0d80&language=en-US&sort_by=popularity.desc&page=1&with_genres='
+    'https://api.themoviedb.org/3/discover/movie?api_key=ab319f50a3792c49e23a3336df9f0d80&language=en-US&sort_by=popularity.desc&with_genres='
 };

@@ -16,18 +16,34 @@ export default {
   data() {
     return {
       filmList: [],
-      genreId: this.$route.params.id
+      genreId: this.$route.params.id,
+      page: 1
     };
   },
   methods: {
-    loadContent() {
-      axios.get(`${config.GENRE_SEARCH + this.genreId}`).then(result => {
-        this.filmList = result.data.results;
-      });
+    loadContent(page) {
+      axios
+        .get(`${config.GENRE_SEARCH + this.genreId + config.PAGE + page}`)
+        .then(result => {
+          this.filmList.push(...result.data.results);
+          this.page++;
+        });
+    },
+    endPage() {
+      window.onscroll = () => {
+        let bottomOfWindow =
+          document.documentElement.scrollTop + window.innerHeight ===
+          document.documentElement.offsetHeight;
+
+        if (bottomOfWindow) {
+          this.loadContent(this.page);
+        }
+      };
     }
   },
   mounted() {
-    this.loadContent();
+    this.loadContent(this.page);
+    this.endPage();
   },
   watch: {
     $route(to, from) {
