@@ -16,6 +16,7 @@ import TopMovies from './views/TopMovies';
 import TrendingMovies from './views/TrendingMovies';
 import ResultMoviePage from './views/ResultMoviePage';
 import ResultTvPage from './views/ResultTvPage';
+import GenreSearchPage from './views/GenreSearchPage';
 
 import 'vuetify/dist/vuetify.min.css';
 
@@ -82,8 +83,13 @@ const routes = [
   },
   {
     name: 'resultTvPage',
-    path: '/ResultTvPage/:id',
+    path: '/resultTvPage/:content',
     component: ResultTvPage
+  },
+  {
+    name: 'genreSearchPage',
+    path: '/genreSearch/:id',
+    component: GenreSearchPage
   }
 ];
 

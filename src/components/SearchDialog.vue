@@ -35,12 +35,11 @@
 </template>
 
 <script>
-import { watch } from 'fs';
 export default {
   data() {
     return {
       dialog: false,
-      searched: '',
+      searched: "",
       radioFilme: false,
       radioSerie: false,
       row: null
@@ -50,10 +49,10 @@ export default {
     searchMovieContent() {
       const content = this.searched;
       this.dialog = false;
-      if (this.row === 'radio-1') {
-        this.$router.push({ name: 'resultMoviePage', params: { content } });
+      if (this.row === "radio-1") {
+        this.$router.push({ name: "resultMoviePage", params: { content } });
       } else {
-        this.$router.push({ name: 'resultTvPage', params: { content } });
+        this.$router.push({ name: "resultTvPage", params: { content } });
       }
     },
     exec() {

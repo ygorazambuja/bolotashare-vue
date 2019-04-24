@@ -6,6 +6,8 @@
           <v-form>
             <v-alert type="warning" :value="true" class="font-weight-bold">Complete os Campos</v-alert>
 
+            <v-alert type="warning" :value="!valid">{{validatorMessage}}</v-alert>
+
             <v-text-field label="Username" v-model="username" required></v-text-field>
             <v-text-field label="Email" type="email" v-model="email" required></v-text-field>
             <v-text-field label="Password" type="password" v-model="password"></v-text-field>
@@ -25,31 +27,39 @@
 </template>
 
 <script>
-import api from '../services/api';
-import { close } from 'fs';
+import api from "../services/api";
 export default {
   data: () => ({
-    username: '',
-    password: '',
-    passwordAux: '',
-    email: '',
-    valid: false,
+    username: "",
+    password: "",
+    passwordAux: "",
+    email: "",
+    valid: true,
+    validatorMessage: "",
     passwordValidation: false,
     loading: false
   }),
   methods: {
     validateFields() {
       if (!this.password || this.password.length <= 0) {
-        return console.log('password cannot be empty');
+        this.valid = false;
+        this.validatorMessage = "Password não pode ser vazio";
+        return console.log("Password não pode ser Vazio");
       }
       if (this.password != this.passwordAux) {
-        return console.log('passwords need to be equals');
+        this.valid = false;
+        this.validatorMessage = "Passwords precisam ser iguais";
+        return console.log("passwords need to be equals");
       }
       if (!this.username || this.username.length <= 0) {
-        return console.log('username cannot be empty');
+        this.valid = false;
+        this.validatorMessage = "Username não pode ser Vazio";
+        return console.log("username cannot be empty");
       }
       if (!this.email || this.email.length <= 0) {
-        return console.log('email cannot me empty');
+        this.valid = false;
+        this.validatorMessage = "Email não pode ser vazio";
+        return console.log("email cannot me empty");
       }
 
       this.valid = true;
@@ -57,7 +67,9 @@ export default {
       const regex = /.+@.+/;
 
       if (!regex.test(email)) {
-        return console.log('email invalido');
+        this.valid = false;
+        this.validatorMessage = "Email Invalido";
+        return console.log("email invalido");
       }
       this.makeAccount();
     },
@@ -66,7 +78,7 @@ export default {
       const { username, password, email } = this;
 
       api
-        .post('/createUser', {
+        .post("/createUser", {
           crossdomain: true,
           username,
           password,
@@ -77,13 +89,13 @@ export default {
           const { token } = response.data;
           const { username } = response.data.user;
 
-          localStorage.setItem('@bolotashare:token', token);
-          localStorage.setItem('@bolotashare:username', username);
-          this.$router.push({ name: 'home' });
+          localStorage.setItem("@bolotashare:token", token);
+          localStorage.setItem("@bolotashare:username", username);
+          this.$router.push({ name: "home" });
         });
     },
     backToSignIn() {
-      this.$router.push({ name: 'signin' });
+      this.$router.push({ name: "signin" });
     }
   }
 };

@@ -50,14 +50,14 @@
 </template>
 
 <script>
-import api from '../services/api';
+import api from "../services/api";
 export default {
-  name: 'SignIn',
+  name: "SignIn",
   data() {
     return {
-      message: 'bejotashare',
-      username: '',
-      password: '',
+      message: "bejotashare",
+      username: "",
+      password: "",
       checked: false,
       visible: false,
       loading: false
@@ -70,7 +70,7 @@ export default {
 
       const { username, password } = this;
       api
-        .post('/authenticate', {
+        .post("/authenticate", {
           crossdomain: true,
           username,
           password
@@ -81,9 +81,9 @@ export default {
           this.loading = false;
 
           if (response.data.user.username) {
-            localStorage.setItem('@bolotashare:username', username);
-            localStorage.setItem('@bolotashare:token', token);
-            this.$router.push({ name: 'home' });
+            localStorage.setItem("@bolotashare:username", username);
+            localStorage.setItem("@bolotashare:token", token);
+            this.$router.push({ name: "home" });
           }
         })
         .catch(error => {
@@ -96,13 +96,16 @@ export default {
       setTimeout(() => {
         this.visible = false;
       }, 5000);
+    },
+    redirect() {
+      const token = localStorage.getItem("@bolotashare:token");
+      if (token) {
+        return this.$router.push({ name: "home" });
+      }
     }
   },
   mounted() {
-    const { token } = localStorage;
-    if (token) {
-      return this.$router.push({ name: 'home' });
-    }
+    this.redirect();
   }
 };
 </script>
