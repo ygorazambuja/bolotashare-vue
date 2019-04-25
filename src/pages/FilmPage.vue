@@ -67,16 +67,12 @@
 <script>
 import api from "../services/api";
 import axios from "axios";
-import Card from "@/components/Card";
 import config from "@/configs/config";
 import YouTubeDialog from "@/components/YouTubeDialog";
-import CardList from "@/components/CardList";
 
 export default {
   components: {
-    card: Card,
-    YouTubeDialog,
-    CardList
+    YouTubeDialog
   },
   data() {
     return {
@@ -115,8 +111,7 @@ export default {
         )
         .then(result => {
           this.recommended = result.data.results;
-        })
-        .catch(err => {});
+        });
     },
     loadCredits() {
       axios
@@ -129,8 +124,7 @@ export default {
               this.directorName = integrante.name;
             }
           });
-        })
-        .catch(err => {});
+        });
     }
   },
 

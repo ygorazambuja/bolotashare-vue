@@ -18,7 +18,6 @@
 
 <script>
 import config from "../configs/config";
-import axios from "axios";
 export default {
   props: ["film"],
   data() {

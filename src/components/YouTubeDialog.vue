@@ -36,8 +36,7 @@ export default {
         )
         .then(result => {
           this.filmTrailerId = result.data.results[0].key;
-        })
-        .catch(err => {});
+        });
     },
     dialogKill() {
       this.dialog = false;

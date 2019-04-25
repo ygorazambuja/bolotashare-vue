@@ -9,10 +9,9 @@
 </template>
 
 <script>
-import Config from '../configs/config';
-import Card from '@/components/Card';
+import Card from "@/components/Card";
 export default {
-  props: ['filmList'],
+  props: ["filmList"],
   components: {
     card: Card
   }

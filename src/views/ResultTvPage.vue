@@ -7,16 +7,16 @@
 
 
 <script>
-import axios from 'axios';
-import config from '../configs/config';
-import SerieCardList from '@/components/SerieCardList';
+import axios from "axios";
+import config from "../configs/config";
+import SerieCardList from "@/components/SerieCardList";
 export default {
   components: {
     card: SerieCardList
   },
   data() {
     return {
-      content: '',
+      content: "",
       imgUrl: config.IMAGE_BASE_URL,
       filmList: []
     };
@@ -39,11 +39,11 @@ export default {
         });
     },
     verifyLogin() {
-      const username = localStorage.getItem('@bolotashare:username');
-      const token = localStorage.getItem('@bolotashare:token');
+      const username = localStorage.getItem("@bolotashare:username");
+      const token = localStorage.getItem("@bolotashare:token");
 
       if (!username || !token) {
-        this.$router.push({ name: 'signin' });
+        this.$router.push({ name: "signin" });
       }
     }
   },
@@ -52,7 +52,7 @@ export default {
     this.loadContent();
   },
   watch: {
-    $route(to, from) {
+    $route() {
       this.content = this.$route.params.content;
       this.loadContent();
     }

@@ -86,12 +86,12 @@ export default {
             this.$router.push({ name: "home" });
           }
         })
-        .catch(error => {
+        .catch(() => {
           this.loading = false;
-          this.showWarning(error);
+          this.showWarning();
         });
     },
-    showWarning(error) {
+    showWarning() {
       this.visible = true;
       setTimeout(() => {
         this.visible = false;

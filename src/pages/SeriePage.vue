@@ -51,14 +51,12 @@
 
 
 <script>
-import api from '../services/api';
-import axios from 'axios';
-import SerieCard from '@/components/SerieCard';
-import config from '@/configs/config';
-import YouTubeDialog from '@/components/YouTubeDialog';
+import api from "../services/api";
+import axios from "axios";
+import config from "@/configs/config";
+import YouTubeDialog from "@/components/YouTubeDialog";
 export default {
   components: {
-    card: SerieCard,
     YouTubeDialog
   },
   data() {

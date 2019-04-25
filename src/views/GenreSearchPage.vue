@@ -46,7 +46,7 @@ export default {
     this.endPage();
   },
   watch: {
-    $route(to, from) {
+    $route() {
       this.id = this.$route.params.id;
       location.reload();
     }
