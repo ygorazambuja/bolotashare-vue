@@ -69,10 +69,12 @@ import api from "../services/api";
 import axios from "axios";
 import config from "@/configs/config";
 import YouTubeDialog from "@/components/YouTubeDialog";
+import CardList from "@/components/CardList";
 
 export default {
   components: {
-    YouTubeDialog
+    YouTubeDialog,
+    CardList
   },
   data() {
     return {
