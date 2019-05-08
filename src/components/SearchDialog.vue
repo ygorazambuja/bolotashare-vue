@@ -36,7 +36,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       dialog: false,
       searched: "",
@@ -46,7 +46,7 @@ export default {
     };
   },
   methods: {
-    searchMovieContent() {
+    searchMovieContent () {
       const content = this.searched;
       this.dialog = false;
       if (this.row === "radio-1") {

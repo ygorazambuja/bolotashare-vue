@@ -20,13 +20,13 @@
 import config from "../configs/config";
 export default {
   props: ["film"],
-  data() {
+  data () {
     return {
       imgUrl: config.IMAGE_BASE_URL
     };
   },
   methods: {
-    goTo() {
+    goTo () {
       this.$router.push({ name: "filmPage", params: { id: this.film.id } });
       location.reload();
     }

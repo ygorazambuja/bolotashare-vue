@@ -20,14 +20,14 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       dialog: false
     };
   },
 
   watch: {
-    dialog(val) {
+    dialog (val) {
       if (!val) {
         return;
       }

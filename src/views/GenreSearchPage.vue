@@ -13,7 +13,7 @@ export default {
   components: {
     card: CardList
   },
-  data() {
+  data () {
     return {
       filmList: [],
       genreId: this.$route.params.id,
@@ -21,7 +21,7 @@ export default {
     };
   },
   methods: {
-    loadContent(page) {
+    loadContent (page) {
       axios
         .get(`${config.GENRE_SEARCH + this.genreId + config.PAGE + page}`)
         .then(result => {
@@ -29,7 +29,7 @@ export default {
           this.page++;
         });
     },
-    endPage() {
+    endPage () {
       window.onscroll = () => {
         let bottomOfWindow =
           document.documentElement.scrollTop + window.innerHeight ===
@@ -41,12 +41,12 @@ export default {
       };
     }
   },
-  mounted() {
+  mounted () {
     this.loadContent(this.page);
     this.endPage();
   },
   watch: {
-    $route() {
+    $route () {
       this.id = this.$route.params.id;
       location.reload();
     }

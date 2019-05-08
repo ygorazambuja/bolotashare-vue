@@ -59,7 +59,7 @@ export default {
   components: {
     YouTubeDialog
   },
-  data() {
+  data () {
     return {
       film: {},
       filmId: this.$route.params.id,
@@ -69,14 +69,14 @@ export default {
     };
   },
   methods: {
-    loadContent() {
+    loadContent () {
       axios
         .get(`${config.SERIE_BASE_URL + this.filmId + config.API_KEY}`)
         .then(result => {
           this.film = result.data;
         });
     },
-    loadTorrentLinks() {
+    loadTorrentLinks () {
       this.torrentLoading = true;
       api.get(`/torrent/${this.film.original_name}`).then(result => {
         this.torrentLinks = result.data;
@@ -84,7 +84,7 @@ export default {
       });
     }
   },
-  mounted() {
+  mounted () {
     this.loadContent();
   }
 };

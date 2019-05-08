@@ -14,7 +14,7 @@ export default {
   components: {
     card: SerieCardList
   },
-  data() {
+  data () {
     return {
       msg: 'PopularSeries',
       filmList: [],
@@ -23,13 +23,13 @@ export default {
     };
   },
   methods: {
-    loadContent() {
+    loadContent () {
       axios.get(`${config.POPULAR_SERIES + config.API_KEY}`).then(result => {
         this.filmList = result.data.results;
         this.loading = false;
       });
     },
-    verifyLogin() {
+    verifyLogin () {
       const username = localStorage.getItem('@bolotashare:username');
       const token = localStorage.getItem('@bolotashare:token');
 
@@ -38,7 +38,7 @@ export default {
       }
     }
   },
-  mounted() {
+  mounted () {
     this.verifyLogin();
     this.loadContent();
   }

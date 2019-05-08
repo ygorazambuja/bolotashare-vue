@@ -14,31 +14,31 @@ export default {
   components: {
     card: SerieCardList
   },
-  data() {
+  data () {
     return {
       content: "",
       imgUrl: config.IMAGE_BASE_URL,
       filmList: []
     };
   },
-  created() {
+  created () {
     this.content = this.$route.params.content;
   },
   methods: {
-    loadContent() {
+    loadContent () {
       axios
         .get(
           `${config.SEARCH_SERIE +
-            config.API_KEY +
-            config.QUERY +
-            this.content}`
+          config.API_KEY +
+          config.QUERY +
+          this.content}`
         )
         .then(result => {
           this.filmList = result.data.results;
           this.loading = false;
         });
     },
-    verifyLogin() {
+    verifyLogin () {
       const username = localStorage.getItem("@bolotashare:username");
       const token = localStorage.getItem("@bolotashare:token");
 
@@ -47,12 +47,12 @@ export default {
       }
     }
   },
-  mounted() {
+  mounted () {
     this.verifyLogin();
     this.loadContent();
   },
   watch: {
-    $route() {
+    $route () {
       this.content = this.$route.params.content;
       this.loadContent();
     }

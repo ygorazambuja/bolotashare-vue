@@ -53,7 +53,7 @@
 import api from "../services/api";
 export default {
   name: "SignIn",
-  data() {
+  data () {
     return {
       message: "bejotashare",
       username: "",
@@ -64,7 +64,7 @@ export default {
     };
   },
   methods: {
-    doLogin(event) {
+    doLogin (event) {
       event.preventDefault();
       this.loading = true;
 
@@ -91,20 +91,20 @@ export default {
           this.showWarning();
         });
     },
-    showWarning() {
+    showWarning () {
       this.visible = true;
       setTimeout(() => {
         this.visible = false;
       }, 5000);
     },
-    redirect() {
+    redirect () {
       const token = localStorage.getItem("@bolotashare:token");
       if (token) {
         return this.$router.push({ name: "home" });
       }
     }
   },
-  mounted() {
+  mounted () {
     this.redirect();
   }
 };

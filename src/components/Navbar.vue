@@ -42,7 +42,7 @@ export default {
   components: {
     SearchDialog
   },
-  data() {
+  data () {
     return {
       drawer: false,
       dialog: false,
@@ -77,22 +77,22 @@ export default {
     };
   },
   methods: {
-    logout() {
+    logout () {
       localStorage.removeItem("@bolotashare:username");
       localStorage.removeItem("@bolotashare:token");
       this.$router.push({ name: "signin" });
     },
-    espandeBarra() {
+    espandeBarra () {
       this.verificaLogin();
     },
-    verificaLogin() {
+    verificaLogin () {
       const token = localStorage.getItem("@bolotashare:token");
       if (token) {
         this.drawer = !this.drawer;
       }
     }
   },
-  mounted() {}
+  mounted () { }
 };
 </script>
 

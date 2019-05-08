@@ -40,7 +40,7 @@ export default {
     loading: false
   }),
   methods: {
-    validateFields() {
+    validateFields () {
       if (!this.password || this.password.length <= 0) {
         this.valid = false;
         this.validatorMessage = "Password não pode ser vazio";
@@ -68,7 +68,7 @@ export default {
       }
       this.makeAccount();
     },
-    makeAccount() {
+    makeAccount () {
       this.loading = true;
       const { username, password, email } = this;
 
@@ -89,7 +89,7 @@ export default {
           this.$router.push({ name: "home" });
         });
     },
-    backToSignIn() {
+    backToSignIn () {
       this.$router.push({ name: "signin" });
     }
   }

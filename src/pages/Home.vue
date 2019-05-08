@@ -15,13 +15,13 @@ export default {
     username: localStorage.getItem('@bolotashare:username')
   }),
   methods: {
-    redirect() {
+    redirect () {
       setTimeout(() => {
         this.$router.push({ name: 'trendingMovies' });
       }, 2000);
     }
   },
-  mounted() {
+  mounted () {
     this.redirect();
   }
 };
