@@ -1,12 +1,12 @@
 <template>
   <nav>
-    <v-toolbar app>
-      <!-- <v-toolbar-side-icon class="grey--text" @click="drawer =!drawer"></v-toolbar-side-icon> -->
-      <v-toolbar-side-icon class="grey--text" @click="espandeBarra"></v-toolbar-side-icon>
-      <v-toolbar-title class="text-uppercase grey--text">
+    <v-app-bar app>
+      <!-- <v-app-bar-side-icon class="grey--text" @click="drawer =!drawer"></v-app-bar-side-icon> -->
+      <v-app-bar-side-icon class="grey--text" @click="espandeBarra"></v-app-bar-side-icon>
+      <v-app-bar-title class="text-uppercase grey--text">
         <span class="font-weight-light">bolota</span>
         <span>share</span>
-      </v-toolbar-title>
+      </v-app-bar-title>
 
       <v-spacer></v-spacer>
 
@@ -14,7 +14,7 @@
         <span>Logout</span>
         <v-icon right>exit_to_app</v-icon>
       </v-btn>
-    </v-toolbar>
+    </v-app-bar>
     <v-navigation-drawer v-model="drawer" app class="indigo">
       <v-list>
         <v-list-tile v-for="url in urlList" :key="url.id" router :to="url.route">
@@ -25,7 +25,7 @@
             <v-list-tile-title class="white--text">{{url.name}}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <SearchDialog/>
+        <SearchDialog />
         <v-list-tile v-for="genre in genreList" :key="genre.id" router :to="genre.url">
           <v-list-tile-action></v-list-tile-action>
           <v-list-tile-content class="white--text">{{genre.name}}</v-list-tile-content>
@@ -42,7 +42,7 @@ export default {
   components: {
     SearchDialog
   },
-  data () {
+  data() {
     return {
       drawer: false,
       dialog: false,
@@ -77,22 +77,22 @@ export default {
     };
   },
   methods: {
-    logout () {
+    logout() {
       localStorage.removeItem("@bolotashare:username");
       localStorage.removeItem("@bolotashare:token");
       this.$router.push({ name: "signin" });
     },
-    espandeBarra () {
+    espandeBarra() {
       this.verificaLogin();
     },
-    verificaLogin () {
+    verificaLogin() {
       const token = localStorage.getItem("@bolotashare:token");
       if (token) {
         this.drawer = !this.drawer;
       }
     }
   },
-  mounted () { }
+  mounted() {}
 };
 </script>
 
