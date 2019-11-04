@@ -1,52 +1,67 @@
 <template>
-  <nav>
-    <v-app-bar app>
-      <!-- <v-app-bar-side-icon class="grey--text" @click="drawer =!drawer"></v-app-bar-side-icon> -->
-      <v-app-bar-side-icon class="grey--text" @click="espandeBarra"></v-app-bar-side-icon>
-      <v-app-bar-title class="text-uppercase grey--text">
-        <span class="font-weight-light">bolota</span>
+  <v-container>
+    <v-app-bar color="indigo" dark app>
+      <v-app-bar-nav-icon class="white--text" @click="espandeBarra"></v-app-bar-nav-icon>
+
+      <v-toolbar-title class="text-uppercase white--text">
+        <span class="font-weight">bolota</span>
         <span>share</span>
-      </v-app-bar-title>
+      </v-toolbar-title>
 
       <v-spacer></v-spacer>
+      <SearchComponent></SearchComponent>
+      <v-spacer></v-spacer>
 
-      <v-btn flat color="grey" @click="logout">
+      <v-btn color="red" @click="logout">
         <span>Logout</span>
         <v-icon right>exit_to_app</v-icon>
       </v-btn>
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" app class="indigo">
-      <v-list>
-        <v-list-tile v-for="url in urlList" :key="url.id" router :to="url.route">
-          <v-list-tile-action>
-            <v-icon class="white--text">{{url.icon}}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title class="white--text">{{url.name}}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <SearchDialog />
-        <v-list-tile v-for="genre in genreList" :key="genre.id" router :to="genre.url">
-          <v-list-tile-action></v-list-tile-action>
-          <v-list-tile-content class="white--text">{{genre.name}}</v-list-tile-content>
-        </v-list-tile>
+      <v-list rounded dark nav>
+        <v-subheader class="white--text">Most Acessed</v-subheader>
+        <v-list-item-group>
+          <v-list-item v-for="url in urlList" :key="url.id" router :to="url.route">
+            <v-list-item-icon>
+              <v-icon class="white--text">{{url.icon}}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content class="white--text">{{url.name}}</v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+
+      <SearchDialog />
+
+      <v-list rounded dark>
+        <v-subheader class="white--text">Genres List</v-subheader>
+        <v-list-item-group>
+          <v-list-item v-for="genre in genreList" :key="genre.id" router :to="genre.url">
+            <v-list-item-icon>
+              <v-icon>{{genre.icon}}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content class="white--text">{{genre.name}}</v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-  </nav>
+  </v-container>
 </template>
 
 <script>
 import SearchDialog from "./SearchDialog";
 import GenreList from "../configs/genreList";
+import SearchComponent from "./SearchComponent";
 export default {
   components: {
-    SearchDialog
+    SearchDialog,
+    SearchComponent
   },
   data() {
     return {
       drawer: false,
       dialog: false,
       genreList: GenreList,
+      collapseOnScroll: true,
 
       urlList: [
         {

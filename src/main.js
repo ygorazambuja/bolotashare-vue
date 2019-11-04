@@ -18,6 +18,7 @@ import ResultMoviePage from './views/ResultMoviePage';
 import ResultTvPage from './views/ResultTvPage';
 import GenreSearchPage from './views/GenreSearchPage';
 
+import SearchPage from './pages/SearchPage';
 import 'vuetify/dist/vuetify.min.css';
 import vuetify from './plugins/vuetify';
 
@@ -91,6 +92,11 @@ const routes = [
         name: 'genreSearchPage',
         path: '/genreSearch/:id',
         component: GenreSearchPage
+    },
+    {
+        name: 'searchPage',
+        path: '/searchPage/:content',
+        component: SearchPage
     }
 ];
 

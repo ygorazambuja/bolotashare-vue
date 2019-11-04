@@ -1,12 +1,14 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="600px">
     <template v-slot:activator="{ on }">
-      <v-list-tile v-on="on" dark>
-        <v-list-tile-action>
-          <v-icon>search</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content class="white--text">Search</v-list-tile-content>
-      </v-list-tile>
+      <v-list rounded dark>
+        <v-list-item v-on="on">
+          <v-list-item-action>
+            <v-icon class="white--text">search</v-icon>
+          </v-list-item-action>
+          <v-list-item-content class="white--text">Search</v-list-item-content>
+        </v-list-item>
+      </v-list>
     </template>
     <v-card>
       <v-card-title>
@@ -27,8 +29,8 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
-        <v-btn color="blue darken-1" flat @click="searchMovieContent">Search</v-btn>
+        <v-btn color="blue darken-1" @click="dialog = false">Close</v-btn>
+        <v-btn color="blue darken-1" @click="searchMovieContent">Search</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -36,7 +38,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       dialog: false,
       searched: "",
@@ -46,7 +48,7 @@ export default {
     };
   },
   methods: {
-    searchMovieContent () {
+    searchMovieContent() {
       const content = this.searched;
       this.dialog = false;
       if (this.row === "radio-1") {

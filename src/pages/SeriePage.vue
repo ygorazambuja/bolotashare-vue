@@ -3,7 +3,7 @@
     <v-container fluid>
       <v-layout row wrap align-center>
         <v-flex xs12 md5 style="background-color: black">
-          <v-img max-heigth="300" :src="imgUrl + film.poster_path"/>
+          <v-img max-heigth="300" :src="imgUrl + film.poster_path" />
         </v-flex>
         <v-flex xs12 md5 class="ml-3">
           <h2 class="indigo--text display-3 pt-4" style="text-align: center">{{film.original_name}}</h2>
@@ -22,7 +22,7 @@
             <span>{{film.overview}}</span>
           </div>
 
-          <YouTubeDialog v-bind:filmId="filmId"/>
+          <YouTubeDialog v-bind:filmId="filmId" />
           <v-btn
             block
             dark
@@ -32,16 +32,16 @@
           >Find Torrents !</v-btn>
 
           <v-list>
-            <v-list-tile v-for="link in torrentLinks" :key="link.id">
-              <v-list-tile-action>
+            <v-list-item v-for="link in torrentLinks" :key="link.id">
+              <v-list-item-action>
                 <a :href="link.magnet">
                   <v-icon>link</v-icon>
                 </a>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>{{link.title}}</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>{{link.title}}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
           </v-list>
         </v-flex>
       </v-layout>
@@ -59,7 +59,7 @@ export default {
   components: {
     YouTubeDialog
   },
-  data () {
+  data() {
     return {
       film: {},
       filmId: this.$route.params.id,
@@ -69,14 +69,14 @@ export default {
     };
   },
   methods: {
-    loadContent () {
+    loadContent() {
       axios
         .get(`${config.SERIE_BASE_URL + this.filmId + config.API_KEY}`)
         .then(result => {
           this.film = result.data;
         });
     },
-    loadTorrentLinks () {
+    loadTorrentLinks() {
       this.torrentLoading = true;
       api.get(`/torrent/${this.film.original_name}`).then(result => {
         this.torrentLinks = result.data;
@@ -84,7 +84,7 @@ export default {
       });
     }
   },
-  mounted () {
+  mounted() {
     this.loadContent();
   }
 };

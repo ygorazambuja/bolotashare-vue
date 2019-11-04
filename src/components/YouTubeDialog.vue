@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" full-width max-width="600px" lazyl light>
+  <v-dialog v-model="dialog" max-width="600px" lazyl light>
     <template v-slot:activator="{ on }">
       <v-btn dark class="error" v-on="on" block>Trailer !</v-btn>
     </template>
@@ -20,7 +20,7 @@ import axios from "axios";
 import config from "../configs/config";
 export default {
   props: ["filmId"],
-  data () {
+  data() {
     return {
       dialog: false,
       searched: "",
@@ -29,7 +29,7 @@ export default {
     };
   },
   methods: {
-    getVideos () {
+    getVideos() {
       axios
         .get(
           `${`${config.MOVIE_BASE_URL + this.filmId}/videos${config.API_KEY}`}`
@@ -38,12 +38,12 @@ export default {
           this.filmTrailerId = result.data.results[0].key;
         });
     },
-    dialogKill () {
+    dialogKill() {
       this.dialog = false;
       this.$off();
     }
   },
-  mounted () {
+  mounted() {
     this.getVideos();
   }
 };

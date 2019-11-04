@@ -1,44 +1,15 @@
 <template>
   <v-app>
     <v-container fluid>
-      <v-layout
-        row
-        wrap
-        align-center
-      >
-        <v-flex
-          xs12
-          md5
-          style="background-color: black"
-        >
-          <v-img
-            max-heigth="300"
-            :src="imgUrl + film.poster_path"
-          />
+      <v-layout row wrap align-center>
+        <v-flex xs12 md5 style="background-color: black">
+          <v-img max-heigth="300" :src="imgUrl + film.poster_path" />
         </v-flex>
-        <v-flex
-          xs12
-          md5
-          class="ml-3"
-        >
-          <h2
-            class="indigo--text display-3 pt-4"
-            style="text-align: center"
-          >{{film.title }}</h2>
-          <h4
-            class="indigo--text"
-            style="text-align: center"
-          >{{film.tagline}}</h4>
-          <v-layout
-            row
-            wrap
-            justify-space-between
-          >
-            <v-flex
-              xs12
-              md4
-              sm6
-            >
+        <v-flex xs12 md5 class="ml-3">
+          <h2 class="indigo--text display-3 pt-4" style="text-align: center">{{film.title }}</h2>
+          <h4 class="indigo--text" style="text-align: center">{{film.tagline}}</h4>
+          <v-layout row wrap justify-space-between>
+            <v-flex xs12 md4 sm6>
               <div>
                 <v-icon color="indigo">calendar_today</v-icon>
                 <span color="indigo">{{film.release_date}}</span>
@@ -48,11 +19,7 @@
                 <span color="indigo">{{directorName}}</span>
               </div>
             </v-flex>
-            <v-flex
-              xs12
-              md4
-              sm6
-            >
+            <v-flex xs12 md4 sm6>
               <div>
                 <v-icon color="indigo">star</v-icon>
                 <span color="indigo">{{film.vote_average}}</span>
@@ -78,18 +45,15 @@
           >Find Torrents !</v-btn>
 
           <v-list>
-            <v-list-tile
-              v-for="link in torrentLinks"
-              :key="link.id"
-            >
-              <v-list-tile-action>
+            <v-list-item v-for="link in torrentLinks" :key="link.id">
+              <v-list-item-action>
                 <a :href="link.magnet">
                   <v-icon>link</v-icon>
                 </a>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>{{link.title}}</v-list-tile-title>
-                <v-list-tile-sub-title class>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>{{link.title}}</v-list-item-title>
+                <v-list-item-sub-title class>
                   <span>
                     <strong>Seeds:</strong>
                     {{link.seeds}}
@@ -98,9 +62,9 @@
                     <strong>Size:</strong>
                     {{link.size}}
                   </span>
-                </v-list-tile-sub-title>
-              </v-list-tile-content>
-            </v-list-tile>
+                </v-list-item-sub-title>
+              </v-list-item-content>
+            </v-list-item>
           </v-list>
         </v-flex>
       </v-layout>
@@ -122,7 +86,7 @@ export default {
     YouTubeDialog,
     CardList
   },
-  data () {
+  data() {
     return {
       film: {},
       filmId: this.$route.params.id,
@@ -135,7 +99,7 @@ export default {
     };
   },
   methods: {
-    loadContent () {
+    loadContent() {
       axios
         .get(`${config.MOVIE_BASE_URL + this.filmId + config.API_KEY}`)
         .then(result => {
@@ -143,25 +107,25 @@ export default {
         });
       this.loadRecommended();
     },
-    loadTorrentLinks () {
+    loadTorrentLinks() {
       this.torrentLoading = true;
       api.get(`/torrent/${this.film.title}`).then(result => {
         this.torrentLinks = result.data;
         this.torrentLoading = false;
       });
     },
-    loadRecommended () {
+    loadRecommended() {
       axios
         .get(
           `${config.MOVIE_BASE_URL + this.filmId}/recommendations${
-          config.API_KEY
+            config.API_KEY
           }`
         )
         .then(result => {
           this.recommended = result.data.results;
         });
     },
-    loadCredits () {
+    loadCredits() {
       axios
         .get(`${config.MOVIE_BASE_URL + this.filmId}/credits${config.API_KEY}`)
         .then(result => {
@@ -176,7 +140,7 @@ export default {
     }
   },
 
-  mounted () {
+  mounted() {
     this.loadContent();
     this.loadCredits();
   }
