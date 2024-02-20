@@ -11,7 +11,7 @@
         "postinstall": "if test \"$NODE_ENV\" = \"production\" ; then npm run build ; fi "
     },
     "dependencies": {
-        "axios": "^0.18.0",
+        "axios": "^0.28.0",
         "connect-history-api-fallback": "^1.6.0",
         "core-js": "^2.6.5",
         "express": "^4.16.4",
